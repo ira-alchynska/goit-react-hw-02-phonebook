@@ -30,12 +30,13 @@ class App extends Component {
   };
 
   handleChange = e => {
+    console.log(e.currentTarget.value);
     this.setState({
       filter: e.currentTarget.value,
     });
   };
 
-  DeleteContact = id => {
+  deleteContact = id => {
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(contact => contact.id !== id),
@@ -43,7 +44,7 @@ class App extends Component {
     });
   };
 
-  getfilteredContacts = () => {
+  getFilteredContacts = () => {
     const { contacts, filter } = this.state;
 
     const normalizedFilter = filter.toLowerCase();
@@ -54,7 +55,7 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-    const filteredContacts = this.getfilteredContacts();
+    const filteredContacts = this.getFilteredContacts();
     return (
       <Container>
         <h1>Phonebook</h1>
@@ -63,7 +64,7 @@ class App extends Component {
         <Filter value={filter} onHandleChange={this.handleChange} />
         <ContactList
           filteredContacts={filteredContacts}
-          onDeleteContact={this.DeleteContact}
+          onDeleteContact={this.deleteContact}
         />
       </Container>
     );

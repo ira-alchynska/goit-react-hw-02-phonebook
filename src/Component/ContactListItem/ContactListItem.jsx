@@ -30,7 +30,6 @@ const ContactListItem = ({ name, number, id, onDeleteContact }) => {
       >
         Delete
       </button>
-      1
     </li>
   );
 };

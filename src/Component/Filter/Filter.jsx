@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const Filter = ({ value, onHandleChange }) => {
+const Filter = ({ filter, onHandleChange }) => {
   const classes = useStyles();
   return (
     <div>
@@ -30,7 +30,7 @@ const Filter = ({ value, onHandleChange }) => {
         type="text"
         placeholder="Search contact"
         name="filter"
-        value={value}
+        value={filter}
         onChange={onHandleChange}
       ></input>
     </div>

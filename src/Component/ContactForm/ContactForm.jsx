@@ -2,34 +2,36 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonForm from './ButtonForm';
 import styles from './ContactForm.module.css';
-
 import { v4 as uuidv4 } from 'uuid';
+
 const INITIAL_STATE = {
   name: '',
   number: '',
 };
+
 class Contactform extends Component {
   state = INITIAL_STATE;
 
   handleSubmit = e => {
+    e.preventDefault();
     const { name, number } = this.state;
     const contact = { id: uuidv4(), name, number };
-    e.preventDefault();
+
     this.props.onSubmitForm(contact);
 
     this.resetForm();
   };
 
-  handleChange = ({ currentTarget }) => {
-    const { name, value } = currentTarget;
+  handleChange = ({ target }) => {
+    const { name, value } = target;
 
     this.setState({ [name]: value });
   };
 
   resetForm = () => this.setState(INITIAL_STATE);
 
-  labelInputIdName = uuidv4();
-  labelInputIdNumber = uuidv4();
+  //labelInputIdName = uuidv4();
+  //labelInputIdNumber = uuidv4();
 
   render() {
     const { name, number } = this.state;
